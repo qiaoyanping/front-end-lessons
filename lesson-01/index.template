@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>{{name}}</title>
+    </head>
+    <body>
+        <h2>{{content.action}}</h2>
+        <p>{{content.target}}</p>
+        <p>{{content.art}}</p>
+    </body>
+</html>
