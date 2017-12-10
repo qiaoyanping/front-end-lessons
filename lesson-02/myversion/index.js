@@ -8,6 +8,7 @@ const PORT = 1308;
 const MEDIA = {
   APPLICATION_JSON: 'application/json;charset=utf-8',
   TEXT_HTML: 'text/html',
+  IMG_PNG: 'image/png',
 };
 
 const jsonOf = (data) => JSON.stringify(data);
@@ -20,6 +21,13 @@ app.get('/', (req, res) => {
   res.setHeader('Content-Type', MEDIA.TEXT_HTML);
   res.end(html);
 });
+
+app.get('/1.png', (req, res) => {
+  const image = fs.readFileSync(path.join(__dirname, 'views', '1.png'));
+  res.statusCode = 200;
+  res.setHeader('Content-Type', MEDIA.IMG_PNG);
+  res.end(image);
+})
 
 app.get('/api/tasks', (req, res) => {
     res.statusCode = 200;

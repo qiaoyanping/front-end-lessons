@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>TODO List</title>
+
+    <!-- import or define css here -->
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+      }
+      .av{
+        position: relative;
+        top: 150px;
+      }
+      .all{
+        width: 550px;
+        height: 65px;
+        transform: translate(-225px);
+       box-shadow:5px 5px 5px gray;
+       position: relative;
+       left: 50%;
+       
+      }
+      .all img{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        
+      }
+      #res{
+        width: 550px;
+        height: 65px;
+        padding-left:60px; 
+        font-size: 25px;
+        font-style: italic;
+       /* position: relative; */
+      
+        border: none;
+       
+       outline: none;
+      }
+     ul{
+       list-style: none;
+       
+
+     }
+    li{
+      font-size: 40px;
+      width:550px;
+      height: 58px;
+     /* border: 1px solid gray; */
+      line-height: 58px;
+      left:50%;
+      /* padding-left: 60px; */
+      position: relative;
+      transform:translate(-225px);
+      box-shadow:5px 5px 5px gray;
+     
+    }
+    .che{
+      width: 40px;
+      height: auto;
+      text-align: center;
+    }
+    .spann{
+      margin-left: 60px;
+    }
+    
+    .x{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 5px;
+      /* display: none; */
+      /* color:white; */
+     
+    }
+   /* .x:hover{
+    color: red;
+    } */
+   
+    </style>
+  </head>
+  <body>
+    <!-- implement your view here -->
+    <h2></h2>
+    <div class='av'>
+  <div class='all'><img src='1.png'><input type="text" placeholder="请输入内容" id="res"></div>
+    <ul id="content"></ul>
+  
+  </div>
+    <!-- import or define script here -->
+    <script>
+    
+    var content=document.getElementById("content")
+    
+     document.querySelector("#res").addEventListener("keydown",myFunction);
+   
+    
+    
+  
+    function myFunction(e){
+      if(e.keyCode==13){
+      var con=res.value;
+      var li = document.createElement("li")
+      li.innerHTML=`<input type='checkbox' value='' class='che' onclick='check(this)'><span class="spann">${con}</span><span class="x">X</span>`;
+      
+      document.querySelector('.all').querySelector("img").style.display='block';
+      content.appendChild(li);
+      res.value='' 
+      hover();
+        
+   }
+}
+
+    function check(checkbox){
+      if(checkbox.checked){
+        event.srcElement.parentNode.style.textDecoration='line-through';
+      }else{
+        event.srcElement.parentNode.style.textDecoration='';
+      }
+      }
+      function Mouseover(li){
+        li.addEventListener('mouseover',function(){
+            li.querySelector(".x").style.display='inline';
+      })
+    }
+    function Mouseout(li){
+      li.addEventListener('mouseout',function(){
+            li.querySelector(".x").style.display='none';
+          })
+    }
+      function hover(){
+        // document.querySelector('.all').querySelector("img").style.display='none';
+       let lis=document.querySelectorAll("li");
+        const des=document.querySelectorAll(".x");
+        des.forEach(de => {
+          de.addEventListener('click',function(e){
+            const cli = e.target.parentNode;
+        const ul = cli.parentNode;
+        console.log(ul);
+        ul.removeChild(cli);
+          })
+          
+    })
+    
+
+        lis.forEach(li => {
+          console.log(li);
+          Mouseover(li);
+          Mouseout(li);
+          });
+         
+        }
+    //     function exit(){
+    //       let lia=document.querySelectorAll("li");
+    //       if(lia.length){
+    //   document.querySelector('.all').querySelector("img").style.display='inline';
+    //   console.log("exit");
+    // }else{
+    //   document.querySelector('.all').querySelector("img").style.display='none';
+    // }
+    // //     }
+    //     hover();
+  
+    // start()
+    </script>
+  </body>
+</html>
